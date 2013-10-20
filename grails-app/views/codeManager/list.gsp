@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: jeffholland
   Date: 10/19/13
-  Time: 6:27 PM
+  Time: 6:52 PM
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -12,6 +12,6 @@
   <title></title>
 </head>
 <body>
-<h1>This is the List Page</h1>
+
 </body>
 </html>
