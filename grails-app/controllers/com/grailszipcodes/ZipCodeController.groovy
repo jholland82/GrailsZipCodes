@@ -98,11 +98,13 @@ class ZipCodeController {
                 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
                 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
                 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
-        withRest(uri: 'http://api.geonames.org') {
-            def http = get(path: '/postalCodeSearch', query:[placename:'MN', username:'jholland']) { resp, xml ->
-                xml.code.each {
-                    def code = new ZipCode(postalCode:it.postalcode.text(), name:it.name.text(), stateCode:it.adminCode1.text(), state:it.adminName1.text())
-                    code.save()
+        states.each { state ->
+            withRest(uri: 'http://api.geonames.org') {
+                def http = get(path: '/postalCodeSearch', query:[placename:state, country:'US', username:'jholland']) { resp, xml ->
+                    xml.code.each {
+                        def code = new ZipCode(postalCode:it.postalcode.text(), name:it.name.text(), stateCode:it.adminCode1.text(), state:it.adminName1.text())
+                        code.save()
+                    }
                 }
             }
         }
@@ -112,6 +114,10 @@ class ZipCodeController {
     def clearCodes(){
         ZipCode.executeUpdate("delete ZipCode")
         redirect(action: "index", params: params)
+    }
+
+    def tagCloud = {
+        [codes: ZipCode.executeQuery("SELECT DISTINCT state from ZipCode order by state ASC")]
     }
 
     protected void notFound() {

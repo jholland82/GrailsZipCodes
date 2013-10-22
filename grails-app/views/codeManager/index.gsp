@@ -34,6 +34,13 @@
 				</g:each>
 				</tbody>
 			</table>
+            <table>
+                <g:each in="${stateTags}" status="i" var="stateInstance">
+                    <tr>
+                        <td>${stateInstance}</td>
+                    </tr>
+                </g:each>
+            </table>
 			<div class="pagination">
 				<g:paginate total="${codeManagerInstanceCount ?: 0}" />
 			</div>
