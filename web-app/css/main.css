@@ -594,3 +594,8 @@ a.skip {
 	position: absolute;
 	left: -9999px;
 }
+
+.tag {
+    float: left;
+    padding: 1px;
+}

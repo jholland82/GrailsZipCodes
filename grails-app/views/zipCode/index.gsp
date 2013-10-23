@@ -13,9 +13,9 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="reset_codes" action="resetCodes"><g:message code="default.blank.message"></g:message></g:link></li>
                 <li><g:link class="load_codes" action="loadCodes"><g:message code="default.add.label"></g:message></g:link></li>
                 <li><g:link class="clear_codes" action="clearCodes"><g:message code="default.button.delete.label"></g:message></g:link></li>
-                <li><g:link class="tag_cloud" action="tagCloud"><g:message code="default.list.label"></g:message></g:link></li>
 			</ul>
 		</div>
 		<div id="list-zipCode" class="content scaffold-list" role="main">

@@ -7,7 +7,7 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
+        "/"(controller:"zipCode", action:"/index")
         "500"(view:'/error')
 	}
 }

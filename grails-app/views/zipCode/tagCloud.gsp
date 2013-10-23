@@ -13,6 +13,7 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+        <li><g:link class="reset_codes" action="resetCodes">Reset ZipCodes</g:link></li>
         <li><g:link class="load_codes" action="loadCodes"><g:message code="default.add.label"></g:message></g:link></li>
         <li><g:link class="clear_codes" action="clearCodes"><g:message code="default.button.delete.label"></g:message></g:link></li>
         <li><g:link class="tag_cloud" action="tagCloud"><g:message code="default.list.label"></g:message></g:link></li>
@@ -32,7 +33,7 @@
         <tbody>
         <tr>
             <td><g:each in="${codes}" var="code"><g:link action='index' params="[state: code.key]">
-                <div style="font-size: ${(ranking.findIndexOf {it==code.key}+ 1) * 4}%; float:left">${code.key}</div>
+                <div class="tag" style="font-size: ${(ranking.findIndexOf {it==code.key}+ 1) * 4}%;">${code.key}</div>
             </g:link></g:each></td>
         </tr>
         </tbody>
