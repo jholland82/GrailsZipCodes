@@ -6,9 +6,5 @@ class ZipCode {
     String stateCode
     String state
     static constraints = {
-      state()
-      stateCode()
-      postalCode()
-      name()
     }
 }

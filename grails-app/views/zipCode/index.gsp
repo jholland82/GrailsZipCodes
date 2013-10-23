@@ -32,8 +32,7 @@
 						<g:sortableColumn property="postalCode" title="${message(code: 'zipCode.postalCode.label', default: 'Postal Code')}" />
 					
 						<g:sortableColumn property="name" title="${message(code: 'zipCode.name.label', default: 'Name')}" />
-                        <td>ZipCode Count</td>
-					
+
 					</tr>
 				</thead>
 				<tbody>
@@ -47,8 +46,7 @@
 						<td>${fieldValue(bean: zipCodeInstance, field: "postalCode")}</td>
 					
 						<td>${fieldValue(bean: zipCodeInstance, field: "name")}</td>
-                        <td>${i}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>

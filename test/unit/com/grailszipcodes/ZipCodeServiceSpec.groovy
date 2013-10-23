@@ -15,6 +15,11 @@ class ZipCodeServiceSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "clearCodes empties the database"() {
+        def clearCodes = service.clearCodes()
+        if (clearCodes.size  == 0){
+            assertTrue()
+        }
+        fail "Couldn't clear the data"
     }
 }
