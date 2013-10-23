@@ -11,8 +11,13 @@ class ZipCodeController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond ZipCode.list(params), model:[zipCodeInstanceCount: ZipCode.count()]
+        if (params.state){
+            params.max = Math.min(max ?: 10, 100)
+            respond ZipCode.findAllByState(params.state), model:[zipCodeInstanceCount: ZipCode.count()]
+        }
+        else {
+          redirect(action:'tagCloud')
+        }
     }
 
     def show(ZipCode zipCodeInstance) {
@@ -117,7 +122,15 @@ class ZipCodeController {
     }
 
     def tagCloud = {
-        [codes: ZipCode.executeQuery("SELECT DISTINCT state from ZipCode order by state ASC")]
+        def zipCodes = ZipCode.getAll().countBy{ it.state }
+        def tagCodes = zipCodes.sort{it.value}
+        def tagValues = []
+        tagCodes.each {
+            tagValues.add(it.key)
+        }
+        [codes: zipCodes.sort{it.key},
+         ranking: tagValues]
+
     }
 
     protected void notFound() {

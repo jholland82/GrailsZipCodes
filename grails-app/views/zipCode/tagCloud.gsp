@@ -26,22 +26,17 @@
     <table>
         <thead>
         <tr>
-
             <g:sortableColumn property="state" title="${message(code: 'zipCode.state.label', default: 'State')}" />
-
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><g:each in="${codes}" var="code">
-                ${code}
-            </g:each></td>
+            <td><g:each in="${codes}" var="code"><g:link action='index' params="[state: code.key]">
+                <div style="font-size: ${(ranking.findIndexOf {it==code.key}+ 1) * 4}%; float:left">${code.key}</div>
+            </g:link></g:each></td>
         </tr>
         </tbody>
     </table>
-    <div class="pagination">
-        <g:paginate total="${zipCodeInstanceCount ?: 0}" />
-    </div>
 </div>
 </body>
 </html>
